@@ -6,13 +6,12 @@ on:
       - '**'
  
 jobs:
+  initialize_repo:
+    runs-on: ubuntu-latest
+    steps:
     - name: Test
-      shell: bash
-      run: |
-        echo "Hello, world!"
+      run: echo "Hello, world!"
     - name: Disable this workflow
-      shell: bash
-      run: |
-        gh workflow disable -R $GITHUB_REPOSITORY "${{ github.workflow }}"
+      run: gh workflow disable -R $GITHUB_REPOSITORY "${{ github.workflow }}"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
