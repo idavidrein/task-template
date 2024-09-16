@@ -8,10 +8,12 @@ on:
 jobs:
   initialize_repo:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
     - name: Test
       run: echo "Hello, world!"
     - name: Disable this workflow
       run: gh workflow disable -R $GITHUB_REPOSITORY "${{ github.workflow }}"
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
